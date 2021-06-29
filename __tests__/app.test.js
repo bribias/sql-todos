@@ -20,39 +20,67 @@ describe('app routes', () => {
           email: 'jon@user.com',
           password: '1234'
         });
-      
+      console.log(signInData.body);
       token = signInData.body.token; // eslint-disable-line
     }, 10000);
-  
+
     afterAll(done => {
       return client.end(done);
     });
 
-    test('returns todo', async() => {
+    test('returns todos', async() => {
 
       const expectation = [
         {
           id: 1,
           todo: 'wash the dishes',
-          completed: false,
-          user_id: 1
+          completed: 'false',
+          user_id: 2
         },
         {
           id: 2,
           todo: 'sweep the floor',
-          completed: false,
-          user_id: 1
+          completed: 'false',
+          user_id: 2
         },
         {
           id: 3,
           todo: 'wash and fold laundry',
-          completed: false,
-          user_id: 1
+          completed: 'false',
+          user_id: 2
+        },
+        {
+          id: 4,
+          todo: 'mop',
+          completed: 'false',
+          user_id: 2
+        },
+        {
+          id: 5,
+          todo: 'take out trash',
+          completed: 'false',
+          user_id: 2
+        },
+        {
+          id: 6,
+          todo: 'relax',
+          completed: 'false',
+          user_id: 2
         }
       ];
 
+      for (let todo of expectation) {
+        await fakeRequest(app)
+          .post('/api/todos')
+          .send(todo)
+          .set('Authorization', token)
+          .expect('Content-Type', /json/)
+          .expect(200);
+      }
+
       const data = await fakeRequest(app)
-        .get('/todo')
+        .get('/api/todos')
+        .set('Authorization', token)
         .expect('Content-Type', /json/)
         .expect(200);
 
