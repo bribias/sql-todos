@@ -28,31 +28,31 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-    test('returns animals', async() => {
+    test('returns todo', async() => {
 
       const expectation = [
         {
-          'id': 1,
-          'name': 'bessie',
-          'cool_factor': 3,
-          'owner_id': 1
+          id: 1,
+          todo: 'wash the dishes',
+          completed: false,
+          user_id: 1
         },
         {
-          'id': 2,
-          'name': 'jumpy',
-          'cool_factor': 4,
-          'owner_id': 1
+          id: 2,
+          todo: 'sweep the floor',
+          completed: false,
+          user_id: 1
         },
         {
-          'id': 3,
-          'name': 'spot',
-          'cool_factor': 10,
-          'owner_id': 1
+          id: 3,
+          todo: 'wash and fold laundry',
+          completed: false,
+          user_id: 1
         }
       ];
 
       const data = await fakeRequest(app)
-        .get('/animals')
+        .get('/todo')
         .expect('Content-Type', /json/)
         .expect(200);
 
