@@ -1,4 +1,4 @@
-module.export = [
+module.exports = [
   {
     id: 1,
     todo: 'wash the dishes',

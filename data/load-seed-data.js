@@ -1,6 +1,6 @@
 const client = require('../lib/client');
 // import our seed data:
-const todo = require('./todo.js');
+const todos = require('./todo.js');
 const usersData = require('./users.js');
 const { getEmoji } = require('../lib/emoji.js');
 
@@ -23,11 +23,12 @@ async function run() {
     );
       
     const user = users[0].rows[0];
+    console.log(todos);
 
     await Promise.all(
-      todo.map(todo => {
+      todos.map(todo => {
         return client.query(`
-                    INSERT INTO animals (name, cool_factor, owner_id)
+                    INSERT INTO todo (todo, completed, user_id)
                     VALUES ($1, $2, $3);
                 `,
         [todo.todo, todo.completed, user.id]);
