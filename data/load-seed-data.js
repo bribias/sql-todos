@@ -23,12 +23,11 @@ async function run() {
     );
       
     const user = users[0].rows[0];
-    console.log(todos);
 
     await Promise.all(
       todos.map(todo => {
         return client.query(`
-                    INSERT INTO todo (todo, completed, user_id)
+                    INSERT INTO todos (todo, completed, user_id)
                     VALUES ($1, $2, $3);
                 `,
         [todo.todo, todo.completed, user.id]);
