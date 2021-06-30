@@ -32,39 +32,39 @@ describe('app routes', () => {
 
       const expectation = [
         {
-          id: 1,
+          id: 7,
           todo: 'wash the dishes',
-          completed: 'false',
+          completed: false,
           user_id: 2
         },
         {
-          id: 2,
+          id: 8,
           todo: 'sweep the floor',
-          completed: 'false',
+          completed: false,
           user_id: 2
         },
         {
-          id: 3,
+          id: 9,
           todo: 'wash and fold laundry',
-          completed: 'false',
+          completed: false,
           user_id: 2
         },
         {
-          id: 4,
+          id: 10,
           todo: 'mop',
-          completed: 'false',
+          completed: false,
           user_id: 2
         },
         {
-          id: 5,
+          id: 11,
           todo: 'take out trash',
-          completed: 'false',
+          completed: false,
           user_id: 2
         },
         {
-          id: 6,
+          id: 12,
           todo: 'relax',
-          completed: 'false',
+          completed: false,
           user_id: 2
         }
       ];
